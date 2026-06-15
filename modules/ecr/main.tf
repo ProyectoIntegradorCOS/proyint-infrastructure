@@ -134,6 +134,13 @@ resource "aws_iam_role_policy_attachment" "github_actions_ecr" {
   policy_arn = aws_iam_policy.ecr_push.arn
 }
 
+# AdministratorAccess permite a Terraform gestionar todos los recursos de la infra.
+# El riesgo está acotado: el rol solo puede ser asumido desde los repos OIDC declarados.
+resource "aws_iam_role_policy_attachment" "github_actions_admin" {
+  role       = aws_iam_role.github_actions.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
 # ── IAM Policy para Terraform backend (S3 + DynamoDB) ────────────────────────
 
 resource "aws_iam_policy" "terraform_state" {
