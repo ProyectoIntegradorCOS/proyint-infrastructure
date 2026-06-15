@@ -29,3 +29,13 @@ variable "max_image_count" {
   type        = number
   default     = 5
 }
+
+variable "tfstate_bucket" {
+  description = "Nombre del bucket S3 donde se guarda el Terraform state"
+  type        = string
+}
+
+variable "tfstate_dynamodb_table" {
+  description = "Nombre de la tabla DynamoDB para los locks de Terraform"
+  type        = string
+}

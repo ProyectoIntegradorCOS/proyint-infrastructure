@@ -51,8 +51,10 @@ module "ecr" {
 
   project              = var.project
   environment          = var.environment
-  github_org           = var.github_org
-  github_repos         = var.github_repos
-  create_oidc_provider = false  # El OIDC provider ya fue creado en dev
-  max_image_count      = 5
+  github_org             = var.github_org
+  github_repos           = var.github_repos
+  create_oidc_provider   = false  # El OIDC provider ya fue creado en dev
+  max_image_count        = 5
+  tfstate_bucket         = "dmc-final-terrastate-app"
+  tfstate_dynamodb_table = "thaqhiri-terraform-locks"
 }
