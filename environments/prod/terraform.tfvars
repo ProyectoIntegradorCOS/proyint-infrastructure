@@ -12,4 +12,4 @@ rds_allocated_storage = 20
 db_name               = "thaqhiri"
 bucket_suffix         = "023894313590"
 github_org            = "ProyectoIntegradorCOS"
-github_repos          = ["proyint-backend", "proyint-infrastructure"]
+github_repos          = ["proyint-backend", "proyint-infrastructure", "proyint-frontend", "proyint-mobile"]

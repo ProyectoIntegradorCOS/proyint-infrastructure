@@ -15,9 +15,14 @@ output "rds_host" {
   sensitive   = true
 }
 
-output "s3_bucket" {
-  description = "Nombre del bucket S3 para APKs"
-  value       = module.storage.bucket_name
+output "s3_frontend_bucket" {
+  description = "Nombre del bucket S3 para el frontend Angular"
+  value       = module.storage.frontend_bucket_name
+}
+
+output "s3_apk_bucket" {
+  description = "Nombre del bucket S3 para distribución de APKs"
+  value       = module.storage.apk_bucket_name
 }
 
 output "vpc_id" {
