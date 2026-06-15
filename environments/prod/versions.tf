@@ -10,6 +10,5 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
-  profile = "dmc_final"
+  region = var.aws_region
 }

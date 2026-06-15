@@ -12,6 +12,5 @@ terraform {
     region         = "us-west-2"
     dynamodb_table = "thaqhiri-terraform-locks"
     encrypt        = true
-    profile        = "dmc_final"
   }
 }
