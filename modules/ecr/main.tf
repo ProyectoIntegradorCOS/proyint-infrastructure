@@ -133,3 +133,44 @@ resource "aws_iam_role_policy_attachment" "github_actions_ecr" {
   role       = aws_iam_role.github_actions.name
   policy_arn = aws_iam_policy.ecr_push.arn
 }
+
+# ── IAM Policy para Terraform backend (S3 + DynamoDB) ────────────────────────
+
+resource "aws_iam_policy" "terraform_state" {
+  name        = "${local.name_prefix}-terraform-state"
+  description = "Permite a GitHub Actions leer/escribir el Terraform state en S3 y DynamoDB"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "S3StateList"
+        Effect = "Allow"
+        Action = ["s3:ListBucket"]
+        Resource = "arn:aws:s3:::${var.tfstate_bucket}"
+      },
+      {
+        Sid    = "S3StateReadWrite"
+        Effect = "Allow"
+        Action = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
+        Resource = "arn:aws:s3:::${var.tfstate_bucket}/*"
+      },
+      {
+        Sid    = "DynamoDBLock"
+        Effect = "Allow"
+        Action = [
+          "dynamodb:DescribeTable",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem"
+        ]
+        Resource = "arn:aws:dynamodb:*:${data.aws_caller_identity.current.account_id}:table/${var.tfstate_dynamodb_table}"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "github_actions_state" {
+  role       = aws_iam_role.github_actions.name
+  policy_arn = aws_iam_policy.terraform_state.arn
+}
