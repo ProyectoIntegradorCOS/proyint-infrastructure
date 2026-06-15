@@ -92,7 +92,7 @@ variable "github_org" {
   type        = string
 }
 
-variable "github_repo" {
-  description = "Nombre del repositorio de la app en GitHub (ej: proyint-app)"
-  type        = string
+variable "github_repos" {
+  description = "Lista de repositorios GitHub autorizados para asumir el IAM Role"
+  type        = list(string)
 }

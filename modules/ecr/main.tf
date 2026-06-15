@@ -80,7 +80,9 @@ resource "aws_iam_role" "github_actions" {
         }
         # Restringe el acceso al repo específico de la app
         StringLike = {
-          "token.actions.githubusercontent.com:sub" = "repo:${var.github_org}/${var.github_repo}:*"
+          "token.actions.githubusercontent.com:sub" = [
+            for repo in var.github_repos : "repo:${var.github_org}/${repo}:*"
+          ]
         }
       }
     }]

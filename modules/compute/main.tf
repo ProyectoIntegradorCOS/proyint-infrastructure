@@ -113,6 +113,10 @@ resource "aws_instance" "app" {
     Project     = var.project
     Environment = var.environment
   }
+
+  lifecycle {
+    ignore_changes = [ami]
+  }
 }
 
 # Elastic IP: IP pública estable para el servidor

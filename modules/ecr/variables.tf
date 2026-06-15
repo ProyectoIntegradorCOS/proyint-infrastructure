@@ -13,9 +13,9 @@ variable "github_org" {
   type        = string
 }
 
-variable "github_repo" {
-  description = "Nombre del repositorio de la app en GitHub (ej: proyint-app)"
-  type        = string
+variable "github_repos" {
+  description = "Lista de repositorios GitHub autorizados para asumir este rol (ej: [\"proyint-backend\", \"proyint-infrastructure\"])"
+  type        = list(string)
 }
 
 variable "create_oidc_provider" {
