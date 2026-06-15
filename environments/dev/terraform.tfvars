@@ -33,4 +33,4 @@ bucket_suffix = "023894313590"
 
 # ECR + GitHub Actions OIDC
 github_org   = "ProyectoIntegradorCOS"
-github_repos = ["proyint-backend", "proyint-infrastructure"]
+github_repos = ["proyint-backend", "proyint-infrastructure", "proyint-frontend", "proyint-mobile"]
