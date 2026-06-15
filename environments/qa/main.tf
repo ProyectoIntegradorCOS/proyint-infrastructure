@@ -45,3 +45,14 @@ module "storage" {
   environment   = var.environment
   bucket_suffix = var.bucket_suffix
 }
+
+module "ecr" {
+  source = "../../modules/ecr"
+
+  project              = var.project
+  environment          = var.environment
+  github_org           = var.github_org
+  github_repo          = var.github_repo
+  create_oidc_provider = false  # El OIDC provider ya fue creado en dev
+  max_image_count      = 5
+}
