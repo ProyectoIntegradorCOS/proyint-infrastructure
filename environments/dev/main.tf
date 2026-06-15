@@ -52,7 +52,7 @@ module "ecr" {
   project              = var.project
   environment          = var.environment
   github_org           = var.github_org
-  github_repo          = var.github_repo
+  github_repos         = var.github_repos
   create_oidc_provider = true  # Solo true en dev; qa y prod lo referencian
   max_image_count      = 3
 }
