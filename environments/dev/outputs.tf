@@ -20,6 +20,11 @@ output "s3_frontend_bucket" {
   value       = module.storage.frontend_bucket_name
 }
 
+output "s3_frontend_url" {
+  description = "URL pública del frontend Angular"
+  value       = module.storage.frontend_website_url
+}
+
 output "s3_apk_bucket" {
   description = "Nombre del bucket S3 para distribución de APKs"
   value       = module.storage.apk_bucket_name
