@@ -46,6 +46,21 @@ module "storage" {
   bucket_suffix = var.bucket_suffix
 }
 
+module "monitoring" {
+  source = "../../modules/monitoring"
+
+  project                  = var.project
+  environment              = var.environment
+  instance_type            = var.monitoring_instance_type
+  subnet_id                = module.network.public_subnet_ids[0]
+  vpc_id                   = module.network.vpc_id
+  vpc_cidr                 = var.vpc_cidr
+  sg_app_id                = module.network.sg_ec2_id
+  key_name                 = "${var.project}-${var.environment}-key"
+  ssh_allowed_cidrs        = var.ssh_allowed_cidrs
+  monitoring_allowed_cidrs = var.monitoring_allowed_cidrs
+}
+
 module "ecr" {
   source = "../../modules/ecr"
 

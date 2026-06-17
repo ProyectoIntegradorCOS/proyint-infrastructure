@@ -21,7 +21,11 @@ availability_zones   = ["us-west-2a", "us-west-2b"]
 ssh_allowed_cidrs = ["0.0.0.0/0"]
 
 # Cómputo (Free Tier)
-ec2_instance_type = "t3.micro"
+ec2_instance_type        = "t3.micro"
+monitoring_instance_type = "t3.micro"
+
+# Monitoreo: acceso a Prometheus, Grafana, Alertmanager, Loki y Jaeger
+monitoring_allowed_cidrs = ["81.27.86.105/32", "181.224.233.39/32"]
 
 # Base de datos (Free Tier)
 rds_instance_class    = "db.t3.micro"

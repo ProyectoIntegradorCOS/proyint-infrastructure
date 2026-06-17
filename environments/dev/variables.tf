@@ -87,6 +87,18 @@ variable "bucket_suffix" {
   type        = string
 }
 
+variable "monitoring_instance_type" {
+  description = "Tipo de instancia EC2 para las instancias de monitoreo"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "monitoring_allowed_cidrs" {
+  description = "CIDRs con acceso a los puertos de monitoreo (Prometheus, Grafana, Loki, Jaeger)"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
 variable "github_org" {
   description = "Usuario u organización de GitHub (ej: carlosormeno)"
   type        = string
