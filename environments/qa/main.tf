@@ -35,7 +35,7 @@ module "database" {
   security_group_id       = module.network.sg_rds_id
   skip_final_snapshot     = true
   deletion_protection     = false
-  backup_retention_period = 7
+  backup_retention_period = 0
 }
 
 module "storage" {

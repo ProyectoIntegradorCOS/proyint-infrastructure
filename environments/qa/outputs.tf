@@ -1,5 +1,8 @@
 output "ec2_public_ip" { value = module.compute.public_ip }
-output "rds_endpoint"  { value = module.database.endpoint; sensitive = true }
+output "rds_endpoint" {
+  value     = module.database.endpoint
+  sensitive = true
+}
 output "s3_frontend_bucket" { value = module.storage.frontend_bucket_name }
 output "s3_apk_bucket"     { value = module.storage.apk_bucket_name }
 
