@@ -8,6 +8,7 @@ module "network" {
   private_subnet_cidrs = var.private_subnet_cidrs
   availability_zones   = var.availability_zones
   ssh_allowed_cidrs    = var.ssh_allowed_cidrs
+  rds_allowed_cidrs    = ["44.238.218.85/32"]  # EC2 de prod comparte este RDS
 }
 
 module "compute" {
@@ -36,6 +37,7 @@ module "database" {
   skip_final_snapshot     = true
   deletion_protection     = false
   backup_retention_period = 0
+  publicly_accessible     = true  # Necesario para que prod EC2 conecte via internet
 }
 
 module "storage" {

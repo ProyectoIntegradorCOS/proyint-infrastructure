@@ -36,3 +36,9 @@ variable "ssh_allowed_cidrs" {
   type        = list(string)
   default     = ["0.0.0.0/0"]
 }
+
+variable "rds_allowed_cidrs" {
+  description = "CIDRs adicionales con acceso al puerto 5432 del RDS (ej. EC2 de otro ambiente)"
+  type        = list(string)
+  default     = []
+}

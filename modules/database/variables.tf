@@ -65,3 +65,9 @@ variable "backup_retention_period" {
   type        = number
   default     = 7
 }
+
+variable "publicly_accessible" {
+  description = "Permitir acceso público al RDS (necesario cuando EC2 de otro ambiente conecta via internet)"
+  type        = bool
+  default     = false
+}
