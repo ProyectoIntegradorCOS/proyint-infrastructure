@@ -23,7 +23,7 @@ on:
         type: choice
         options:
           - dev
-          - staging
+          - qa
           - prod
 
 env:
