@@ -32,7 +32,7 @@ module "database" {
   db_name                 = var.db_name
   db_username             = var.db_username
   db_password             = var.db_password
-  subnet_ids              = module.network.private_subnet_ids
+  subnet_ids              = module.network.public_subnet_ids
   security_group_id       = module.network.sg_rds_id
   skip_final_snapshot     = true
   deletion_protection     = false
