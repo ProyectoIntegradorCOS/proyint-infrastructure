@@ -58,7 +58,7 @@ resource "aws_db_instance" "main" {
 
   # Single-AZ (Free Tier — Multi-AZ tiene costo)
   multi_az            = false
-  publicly_accessible = false
+  publicly_accessible = var.publicly_accessible
 
   skip_final_snapshot     = var.skip_final_snapshot
   deletion_protection     = var.deletion_protection

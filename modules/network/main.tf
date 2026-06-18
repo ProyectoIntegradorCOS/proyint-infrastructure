@@ -161,6 +161,17 @@ resource "aws_security_group" "rds" {
     security_groups = [aws_security_group.ec2.id]
   }
 
+  dynamic "ingress" {
+    for_each = length(var.rds_allowed_cidrs) > 0 ? [1] : []
+    content {
+      description = "PostgreSQL desde CIDRs externos (ej. EC2 de otro ambiente)"
+      from_port   = 5432
+      to_port     = 5432
+      protocol    = "tcp"
+      cidr_blocks = var.rds_allowed_cidrs
+    }
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
