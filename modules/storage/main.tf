@@ -5,7 +5,8 @@ locals {
 # ── Bucket frontend (Angular build) ──────────────────────────────────────────
 
 resource "aws_s3_bucket" "frontend" {
-  bucket = "${local.name_prefix}-frontend-${var.bucket_suffix}"
+  bucket        = "${local.name_prefix}-frontend-${var.bucket_suffix}"
+  force_destroy = true
 
   tags = {
     Name        = "${local.name_prefix}-frontend"
@@ -54,7 +55,8 @@ resource "aws_s3_bucket_policy" "frontend_public_read" {
 # ── Bucket APK (distribución móvil) ──────────────────────────────────────────
 
 resource "aws_s3_bucket" "apk" {
-  bucket = "${local.name_prefix}-apk-${var.bucket_suffix}"
+  bucket        = "${local.name_prefix}-apk-${var.bucket_suffix}"
+  force_destroy = true
 
   tags = {
     Name        = "${local.name_prefix}-apk"
