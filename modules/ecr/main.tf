@@ -10,6 +10,7 @@ data "aws_region" "current" {}
 resource "aws_ecr_repository" "app" {
   name                 = local.name_prefix
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true
